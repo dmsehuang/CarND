@@ -29,25 +29,29 @@ My pipeline consists of 5 steps:
 5. Use Hough Transform to detect lines
 6. Draw lines
 
-####1. Gaussian blur
+This is the original image:
+![original image][image0]
+
+#### 1. Gaussian blur
 We apply Gaussian blur to the image in order to reduce noise and make the image more concise without the tedious details. Image you are driving a car. If you focus on too many irrelevant objects, it would keep your brain busy dealing too much information.
 
 ![blur image][image1]
 
-####2. Color selection
+#### 2. Color selection
 The purpose of color selection is to filter out the pixels that are not related to the lane lines. In order to complete the task, we need to convert image from RGB space to HSV space. 
 
 Representing color in HSV space makes the color selection more accurate and it’s widely used in the color tracking application. 
 
 HSV stands for Hue, Saturation and Value. It allows the computer to pick the color even when the lane line is in the shadow.
 
-![original image][image0]
 ![color selection][image2]
 
 Debug tips:
 I basically use an image color picker to get the HSV value for the lane line and then use color generator to get the range of the desired color.
 Useful website:
+
 [1. online image color picker](http://imagecolorpicker.com/)
+
 [2. color generator](http://color.yafla.com/)
 
 
