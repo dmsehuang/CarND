@@ -50,8 +50,8 @@ Debug tips:
 I basically use an image color picker to get the HSV value for the lane line and then use color generator to get the range of the desired color.
 Useful website:
 
-[1. online image color picker](http://imagecolorpicker.com/)
-[2. color generator](http://color.yafla.com/)
+1. [online image color picker](http://imagecolorpicker.com/)
+2. [color generator](http://color.yafla.com/)
 
 #### 1.3 Edge detection
 We use Canny edge detection algorithm to convert a image into an edge images. There’re two parameters that we care about when using the canny function. The algorithm uses the “high_threshold” to detect strong pixels and extends the pixels that both exceed the “low_threshold” and connect to the strong pixels. Canny himself recommends 1:2 or 1:3 for the low/high ratio.
@@ -71,23 +71,22 @@ We then use “Hough Transform” to detect lines in the image. The basic idea o
 #### 1.6 Draw lane lines
 Finally, we need to draw the detected lane lines on the road. In order to gain a smooth, stable lane line, we need to follow these steps:
 Filter out horizontal and vertical line segments.
-a. _Group line segments together and assign each one to either left or right lane lines_
-b. _Calculate average slope and intersection for left/right lanes_
-c. _Draw it on the image._
+1. _Group line segments together and assign each one to either left or right lane lines_
+2. _Calculate average slope and intersection for left/right lanes_
+3. _Draw it on the image._
 
 ![Final output][image6]
 
 
-### 2. Identify potential shortcomings with your current pipeline
+### 2. Shortcomings 
 
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
-
+1. I assume lane lines are yellow or white color. I also assume the roads are well annotated with lane lines. This can't always be true in the real world.
+2. I assume that the region of interest is always a quadrilateral and it doesn't change.
+3. My algorithm doesn't remove words printed on the road, for example, if "PED XING" appears on the road, the drawline function would produce crazy output.
+4. Test data set is very small and all the parameters still needs to be tuned.
+5. If a car is in the region of interest, and if it's a white or yellow car, the algorithm can not filter out the car lines and it would produce error.
 
 ### 3. Suggest possible improvements to your pipeline
+1. I am thinking about some systematic way to allow us to tune parameters easily so that our algorithm is feeded with more accurate parameters and thus works better.
+2. More test data.
 
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
